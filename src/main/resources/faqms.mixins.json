@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xland.mcmod.rsigntip19.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "MixinClientPacketListener"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

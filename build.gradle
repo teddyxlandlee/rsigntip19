@@ -1,0 +1,46 @@
+plugins {
+	id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+version = '0.1.0'
+group = 'xland.mcmod'
+
+repositories {
+	maven {
+            url = 'https://lss233.littleservice.cn/repositories/minecraft'
+            name = 'Lss233'
+        }
+    maven { url = 'https://maven.aliyun.com/repository/public' }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:1.19.1-rc2"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:0.14.8"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	it.options.release = 17
+}
+
+java {
+	withSourcesJar()
+}
+
+jar {
+	from("LICENSE") {
+		rename { "META-INF/LICENSE_${project.archivesBaseName}.txt"}
+	}
+}
