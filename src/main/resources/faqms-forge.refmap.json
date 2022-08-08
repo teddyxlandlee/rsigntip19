@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "xland/mcmod/rsigntip19/mixin/MixinClientPacketListener": {
+      "handleServerData": "net.minecraft.client.multiplayer.ClientPacketListener.m_213672_(Lnet/minecraft/network/protocol/game/ClientboundServerDataPacket;)V",
+      "Lnet/minecraft/client/gui/components/toasts/ToastComponent;addToast(Lnet/minecraft/client/gui/components/toasts/Toast;)V": "Lnet/minecraft/client/gui/components/toasts/ToastComponent;m_94922_(Lnet/minecraft/client/gui/components/toasts/Toast;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "xland/mcmod/rsigntip19/mixin/MixinClientPacketListener": {
+        "handleServerData": "net.minecraft.client.multiplayer.ClientPacketListener.m_213672_(Lnet/minecraft/network/protocol/game/ClientboundServerDataPacket;)V",
+        "Lnet/minecraft/client/gui/components/toasts/ToastComponent;addToast(Lnet/minecraft/client/gui/components/toasts/Toast;)V": "Lnet/minecraft/client/gui/components/toasts/ToastComponent;m_94922_(Lnet/minecraft/client/gui/components/toasts/Toast;)V"
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import java.time.Instant
+
 plugins {
 	id 'fabric-loom' version '0.12-SNAPSHOT'
 }
@@ -5,7 +7,7 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
-version = '0.1.0'
+version = '0.1.1'
 group = 'xland.mcmod'
 
 repositories {
@@ -42,5 +44,17 @@ java {
 jar {
 	from("LICENSE") {
 		rename { "META-INF/LICENSE_${project.archivesBaseName}.txt"}
+	}
+	manifest {
+		attributes([
+		        "Specification-Title": "Remove Sign Tips",
+				"Specification-Vendor": "teddyxlandlee",
+				"Specification-Version": "1",
+				"Implementation-Title": project.name,
+				"Implementation-Version": project.version,
+				"Implementation-Vendor": "teddyxlandlee,QWERTY770",
+				"Implementation-Timestamp": Instant.now(),
+				"MixinConfigs": "faqms-forge.mixins.json"
+		])
 	}
 }
