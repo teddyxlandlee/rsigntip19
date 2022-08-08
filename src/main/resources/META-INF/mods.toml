@@ -1,0 +1,17 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="GPL-3.0 or later"
+
+[[mods]]
+modId="nosigntip"
+version="${file.jarVersion}"
+displayName="Remove Sign Tip"
+authors="teddyxlandlee,QWERTY770"
+description="How dare you M\u0024!"
+
+[[dependencies.nosigntip]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.19.1,)"
+ordering="NONE"
+side="CLIENT"
