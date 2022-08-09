@@ -1,4 +1,12 @@
+import org.objectweb.asm.ClassWriter
 import java.time.Instant
+import org.objectweb.asm.Opcodes as ops
+
+buildscript {
+	dependencies {
+		classpath("org.ow2.asm:asm:9.3")
+	}
+}
 
 plugins {
 	id 'fabric-loom' version '0.12-SNAPSHOT'
@@ -7,7 +15,7 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
-version = '0.1.2'
+version = '0.1.4'
 group = 'xland.mcmod'
 
 repositories {
@@ -58,3 +66,31 @@ jar {
 		])
 	}
 }
+
+task generateModClass {
+	def className = "utio90j4kIJqJAV7zYH6o/A"
+	def modId = "nosigntip"
+	def file = new File(processResources.destinationDir, "${className}.class")
+	afterEvaluate {
+		file.parentFile.mkdirs()
+		file.createNewFile()
+		def writer = new ClassWriter(3)
+		writer.visit(ops.V1_6, ops.ACC_PUBLIC, className, null, "java/lang/Object", null)
+		writer.visitMethod(ops.ACC_PUBLIC, "<init>", "()V", null, null).with {
+			it.visitVarInsn(ops.ALOAD, 0)
+			it.visitMethodInsn(ops.INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false)
+			it.visitInsn(ops.RETURN)
+			it.visitMaxs(-1, -1)
+		}
+		writer.visitAnnotation("Lnet/minecraftforge/fml/common/Mod;", true).with {
+			it.visit("value", modId)
+		}
+		writer.visitSource(null, "ASM Generated")
+		file.newOutputStream().with {
+			it.write(writer.toByteArray())
+			it.close()
+		}
+	}
+}
+
+processResources.dependsOn(generateModClass)
