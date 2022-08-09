@@ -13,7 +13,7 @@
   },
   "icon": "bdf86a26-5275-4a24-a92d-1f7f71671588.png",
 
-  "license": "GPLv3",
+  "license": "GPLv2",
 
   "environment": "client",
   "mixins": [
